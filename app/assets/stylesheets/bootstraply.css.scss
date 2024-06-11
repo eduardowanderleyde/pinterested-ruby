@@ -1,2 +1,36 @@
+$navbar-height: 50px;
+$navbar-default-bg: #f8f8f8;
+$jumbotron-bg: #f8f8f8;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar-custom {
+  background-color: $navbar-default-bg;
+  /* Cor cinza clara */
+  height: $navbar-height;
+  /* Define a altura da navbar */
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 2rem;
+  /* Tamanho maior para o nome "Pinterested" */
+  line-height: $navbar-height;
+  /* Centraliza verticalmente o texto */
+}
+
+.navbar-custom .nav-link {
+  font-size: 1.25rem;
+  /* Ajuste o tamanho conforme necessário para os links */
+  line-height: $navbar-height;
+  /* Centraliza verticalmente o texto */
+}
+
+.jumbotron {
+  background-color: $jumbotron-bg;
+  /* Define a cor de fundo do jumbotron */
+}
+
+.center {
+  text-align: center;
+}
