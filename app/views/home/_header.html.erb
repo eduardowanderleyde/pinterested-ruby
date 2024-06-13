@@ -11,8 +11,10 @@
         <li class="nav-item"><%= link_to 'Home', root_path, class: 'nav-link text-secondary' %></li>
         <li class="nav-item"><%= link_to 'About Me', home_about_path, class: 'nav-link text-secondary' %></li>
         <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item"><%= link_to "Add Pin", new_pin_path, class: 'nav-link text-secondary' %></li>
 
+          <li class="nav-item"><%= link_to "List Pins", pins_path, class: 'nav-link text-secondary' %></li>
+          <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-secondary' %></li>
           <li class="nav-item"><%= link_to "Edit Profile", edit_user_registration_path, class: 'nav-link text-secondary' %></li>
         <% else %>
           <li class="nav-item"><%= link_to 'Login', new_user_session_path, class: 'nav-link text-secondary' %></li>

@@ -1,9 +1,12 @@
-<h1>New pin</h1>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>New pin</h1></div>
+  <div class="panel-body">
+x§
+    <%= render "form", pin: @pin %>
+  </div>
+  <br>
 
-<%= render "form", pin: @pin %>
-
-<br>
-
-<div>
+<div class="panel-footer">
   <%= link_to "Back to pins", pins_path %>
+</div>
 </div>
