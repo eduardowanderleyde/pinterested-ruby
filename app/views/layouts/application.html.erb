@@ -22,6 +22,6 @@
       <%= yield %>
     </div>
     <!-- Inclua o JavaScript do Bootstrap -->
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
   </body>
 </html>
