@@ -1,10 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
+<% if @pin.image.present? %>
+  <% image_url = "#{root_url[0..-2]}#{@pin.image.url(:original, timestamp: false)}" %>
+  <img src="<%= image_url %>" alt="Pin image">
+<% end %>
+
 <%= render @pin %>
 
 <div>
   <%= link_to "Edit this pin", edit_pin_path(@pin) %> |
   <%= link_to "Back to pins", pins_path %>
-
-  <%= button_to "Destroy this pin", @pin, method: :delete %>
+  <%= button_to "Destroy this pin", @pin, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>

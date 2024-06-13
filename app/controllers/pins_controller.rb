@@ -28,7 +28,7 @@ class PinsController < ApplicationController
     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
-      render action: 'new'
+      render :new
     end
   end
 
@@ -37,13 +37,13 @@ class PinsController < ApplicationController
     if @pin.update(pin_params)
       redirect_to @pin, notice: 'Pin was successfully updated.'
     else
-      render action: 'edit'
+      render :edit
     end
   end
 
   # DELETE /pins/1 or /pins/1.json
   def destroy
-    @pin.destroy!
+    @pin.destroy
     redirect_to pins_url, notice: 'Pin was successfully destroyed.'
   end
 
@@ -56,7 +56,7 @@ class PinsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def pin_params
-    params.require(:pin).permit(:description)
+    params.require(:pin).permit(:description, :image)
   end
 
   def correct_user
