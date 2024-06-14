@@ -22,6 +22,11 @@ gem 'mimemagic', '~> 0.3.10'
 gem 'paperclip', '~> 6.1.0'
 
 
+gem 'aws-sdk-s3', require: false
+
+
+
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 end

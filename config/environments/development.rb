@@ -71,9 +71,15 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  # Remova ou comente a linha abaixo
-  # config.action_controller.raise_on_missing_callback_actions = true
-
   # Add for devise installation instructions 
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
+  config.public_file_server.enabled = true
+
+  # Configuração do Paperclip
+  config.paperclip_defaults = {
+    storage: :filesystem,
+    path: ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename",
+    url: "/system/:class/:attachment/:id_partition/:style/:filename"
+  }
 end

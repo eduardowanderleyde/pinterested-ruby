@@ -1,14 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Listing Pins</h1>
-
-<div id="pins">
-  <% @pins.each do |pin| %>
-    <%= render pin %>
-    <p>
-      <%= link_to "Show this pin", pin %>
-    </p>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>Listing Pins</h1>
+  </div>
+  <div class="panel-body">
+    <div id="pins" class="list-group">
+      <% @pins.each do |pin| %>
+        <div class="list-group-item">
+          <%= render pin %>
+          <p>
+            <%= link_to "Show this pin", pin, class: "btn btn-primary" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <%= link_to "New pin", new_pin_path, class: "btn btn-primary" %>
+  </div>
 </div>
-
-<%= link_to "New pin", new_pin_path %>
