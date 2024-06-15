@@ -2,16 +2,22 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h1>Listing Pins</h1>
   </div>
   <div class="panel-body">
     <div id="pins" class="list-group">
       <% @pins.each do |pin| %>
         <div class="list-group-item">
-          <%= render pin %>
-          <p>
-            <%= link_to "Show this pin", pin, class: "btn btn-primary" %>
-          </p>
+          <div class="row">
+            <div class="col-md-2">
+              <img src="<%= pin.image.url(:thumb) %>" alt="<%= pin.description %>" class="img-thumbnail">
+            </div>
+            <div class="col-md-10">
+              <%= render pin %>
+              <p>
+                <%= link_to "Show this pin", pin, class: "btn btn-primary" %>
+              </p>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>

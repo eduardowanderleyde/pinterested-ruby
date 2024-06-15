@@ -1,5 +1,3 @@
-# config/initializers/paperclip.rb
-
 Paperclip::Attachment.default_options.update({
   storage: :s3,
   s3_credentials: {
@@ -9,8 +7,9 @@ Paperclip::Attachment.default_options.update({
     s3_region: ENV['AWS_REGION']
   },
   s3_protocol: 'https',
-  url: ':s3_path_url',
+  url: ':s3_alias_url',
   path: '/:class/:attachment/:id_partition/:style/:filename',
+  s3_host_alias: 's3.amazonaws.com/YOUR_BUCKET_NAME',
   s3_options: {
     # Remova ou comente a configuração de acl, pois o bucket não permite ACLs
     # acl: nil
