@@ -1,15 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: blue"><%= notice %></p>
 
 <div class="panel panel-default">
   <div class="panel-heading">
   </div>
   <div class="panel-body">
-    <div id="pins" class="list-group">
+    <div class="pins list-group" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; background-color: white;">
       <% @pins.each do |pin| %>
-        <div class="list-group-item">
+        <div class="pin box list-group-item" style="box-sizing: border-box; border: 1px solid #ddd; padding: 10px;">
           <div class="row">
             <div class="col-md-2">
-              <img src="<%= pin.image.url(:thumb) %>" alt="<%= pin.description %>" class="img-thumbnail">
+              <img src="<%= pin.image.url(:medium) %>" alt="<%= pin.description %>" class="img-thumbnail" style="width: 100%;">
             </div>
             <div class="col-md-10">
               <%= render pin %>
