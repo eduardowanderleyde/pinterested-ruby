@@ -1,10 +1,11 @@
+<!-- app/views/pins/show.html.erb -->
 <div class="panel panel-default">
   <div class="panel-heading">
     <h2>Pin Details</h2>
   </div>
   <div class="panel-body">
-    <% if @pin.image.present? %>
-      <img src="<%= @pin.image.url(:original) %>" alt="Pin image" class="img-responsive">
+    <% if @image_url.present? %>
+      <img src="<%= @image_url %>" alt="Pin image" class="img-responsive">
     <% else %>
       <p>No image available</p>
     <% end %>

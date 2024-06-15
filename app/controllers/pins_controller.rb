@@ -9,11 +9,9 @@ class PinsController < ApplicationController
   end
 
   def show
-    puts "Debug: @pin.image.path => #{@pin.image.path}"
-    puts "Debug: @pin.image.url(:original) => #{@pin.image.url(:original)}"
+    @pin = Pin.find(params[:id])
+    @image_url = @pin.image.expiring_url(3600) # URL válida por 1 hora
   end
-  
-  
 
   def new
     @pin = current_user.pins.build

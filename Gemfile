@@ -20,10 +20,9 @@ gem 'image_processing', '~> 1.2'
 gem 'active_storage_validations'
 gem 'mimemagic', '~> 0.3.10'
 gem 'paperclip', '~> 6.1.0'
-
-
 gem 'aws-sdk-s3', require: false
 
+gem 'dotenv-rails', groups: [:development, :test]
 
 
 
