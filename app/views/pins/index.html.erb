@@ -8,35 +8,33 @@
     <div class="pins list-group" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; background-color: white;">
       <% @pins_with_expiring_urls.each do |item| %>
         <div class="pin box list-group-item" style="box-sizing: border-box; border: 1px solid #ddd; padding: 10px;">
-          <div class="row">
-            <div class="col-md-2">
-              <% if item[:expiring_url] %>
-                <%= link_to image_tag(item[:expiring_url], alt: item[:pin].description, class: "img-responsive"), item[:pin] %>
-              <% else %>
-                <i class="fa-solid fa-tags" style="font-size: 2em;"></i>
-              <% end %>
-            </div>
-            <div class="col-md-10">
-              <p><strong>Description:</strong> <%= item[:pin].description %></p>
-              <% if item[:pin].user %>
-                <p><strong>Posted by:</strong> <%= item[:pin].user.email %></p>
-              <% end %>
-              <p>
-                <%= link_to "Show this pin", item[:pin], class: "btn btn-primary" %>
-              </p>
-              <% if item[:pin].user == current_user %>
-                <div class="btn-group">
-                  <%= link_to 'Edit', edit_pin_path(item[:pin]), class: 'btn btn-secondary' %>
-                  <%= link_to 'Destroy', item[:pin], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-                </div>
-              <% end %>
-            </div>
+          <div style="text-align: center;">
+            <% if item[:expiring_url] %>
+              <%= link_to image_tag(item[:expiring_url], alt: item[:pin].description, class: "img-responsive", style: "width: 100%; height: auto;"), item[:pin] %>
+            <% else %>
+              <i class="fa-solid fa-tags" style="font-size: 2em;"></i>
+            <% end %>
+          </div>
+          <div style="padding: 10px 0; text-align: center;">
+            <p><strong>Description:</strong> <%= item[:pin].description %></p>
+            <% if item[:pin].user %>
+              <p><strong>Posted by:</strong> <%= item[:pin].user.email %></p>
+            <% end %>
+            <p>
+              <%= link_to "Show this pin", item[:pin], class: "btn btn-primary" %>
+            </p>
+            <% if item[:pin].user == current_user %>
+              <div class="btn-group" style="display: flex; justify-content: center;">
+                <%= link_to 'Edit', edit_pin_path(item[:pin]), class: 'btn btn-secondary' %>
+                <%= link_to 'Destroy', item[:pin], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="panel-footer">
+  <div class="panel-footer" style="text-align: center;">
     <%= link_to "New pin", new_pin_path, class: "btn btn-primary" %>
   </div>
 </div>
