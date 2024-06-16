@@ -1,4 +1,3 @@
-# app/controllers/pins_controller.rb
 class PinsController < ApplicationController
   before_action :set_pin, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
@@ -6,6 +5,12 @@ class PinsController < ApplicationController
 
   def index
     @pins = Pin.all
+    @pins_with_expiring_urls = @pins.map do |pin|
+      {
+        pin: pin,
+        expiring_url: pin.image.present? ? pin.image.expiring_url(3600) : nil
+      }
+    end
   end
 
   def show

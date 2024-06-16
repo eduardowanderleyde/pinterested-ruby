@@ -1,4 +1,5 @@
-<!-- app/views/pins/show.html.erb -->
+<p style="color: blue"><%= notice %></p>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h2>Pin Details</h2>
@@ -12,6 +13,9 @@
 
     <div class="well">
       <p><strong>Description:</strong> <%= @pin.description %></p>
+      <% if @pin.user %>
+        <p><strong>Posted by:</strong> <%= @pin.user.email %></p>
+      <% end %>
     </div>
 
     <div class="btn-group">
