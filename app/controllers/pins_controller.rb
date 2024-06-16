@@ -15,7 +15,7 @@ class PinsController < ApplicationController
 
   def show
     @pin = Pin.find(params[:id])
-    @image_url = @pin.image.expiring_url(3600) # URL válida por 1 hora
+    @image_url = @pin.image.expiring_url(3600) if @pin.image.present? # URL válida por 1 hora
   end
 
   def new
