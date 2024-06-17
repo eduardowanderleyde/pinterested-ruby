@@ -1,21 +1,19 @@
 services:
   - type: web
     name: pinterested
-    env: docker
-    plan: free
-    buildCommand: ""
-    startCommand: "bundle exec rails server -b 0.0.0.0 -p $PORT"
-    dockerfilePath: ./Dockerfile
+    env: ruby
+    buildCommand: bundle exec rake assets:precompile
+    startCommand: bundle exec puma -C config/puma.rb
     envVars:
-      - key: RAILS_ENV
-        value: production
-      - key: SECRET_KEY_BASE
-        value: 3b7d13f6c1e8437c2c7e8fd2ff3d2c8b41e6a4efbbbe8d8a9a9a827530d8e6e4a8e2e33b6a6a2c1a2d3a4b5c6d7e8f9g
+      - key: RAILS_MASTER_KEY
+        value: b54c3b760a125352397c605ca76629f6
       - key: AWS_ACCESS_KEY_ID
-        fromDatabase: AWS_ACCESS_KEY_ID
+        value: your_aws_access_key_id
       - key: AWS_SECRET_ACCESS_KEY
-        fromDatabase: AWS_SECRET_ACCESS_KEY
+        value: your_aws_secret_access_key
       - key: AWS_REGION
-        fromDatabase: AWS_REGION
+        value: us-east-2
       - key: AWS_BUCKET_NAME
-        fromDatabase: AWS_BUCKET_NAME
+        value: pinterest25
+      - key: WEB_CONCURRENCY
+        value: 2
