@@ -16,9 +16,15 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build gems
+# Install packages needed to build gems and precompile assets
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+    apt-get install --no-install-recommends -y \
+    build-essential \
+    git \
+    libvips \
+    pkg-config \
+    nodejs \
+    yarn
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -37,7 +43,7 @@ ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 
 # Precompiling assets for production
-RUN ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE=$SECRET_KEY_BASE ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
