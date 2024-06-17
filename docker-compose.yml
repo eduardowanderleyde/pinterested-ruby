@@ -1,4 +1,4 @@
-version: '3.8' # Atualize a versão para uma mais recente
+version: "3.8"
 
 services:
   db:
@@ -10,16 +10,22 @@ services:
       POSTGRES_PASSWORD: password
 
   app:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bin/rails server -b '0.0.0.0'"
+    build:
+      context: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b '0.0.0.0'"
     volumes:
       - .:/rails
     ports:
       - "3000:3000"
+    environment:
+      RAILS_ENV: "production"
+      SECRET_KEY_BASE: "your_generated_secret_key_base"  # Adicione sua chave aqui
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION}
+      AWS_BUCKET_NAME: ${AWS_BUCKET_NAME}
     depends_on:
       - db
-    env_file:
-      - .env
 
 volumes:
   postgres_data:
