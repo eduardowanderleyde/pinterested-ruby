@@ -8,9 +8,7 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development" \
-    SECRET_KEY_BASE=${SECRET_KEY_BASE} \
-    RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+    BUNDLE_WITHOUT="development" 
 
 # Build stage
 FROM base as build
