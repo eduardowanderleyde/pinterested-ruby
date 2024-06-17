@@ -1,21 +1,12 @@
 services:
   - type: web
     name: pinterested
-    env: ruby
-    buildCommand: bundle exec rake assets:precompile
-    startCommand: bundle exec puma -C config/puma.rb
+    env: docker
+    dockerfilePath: Dockerfile
+    buildCommand: ""
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: RAILS_MASTER_KEY
-        value: 25554a3e19a26700dc9af0e0d0031ee5
       - key: SECRET_KEY_BASE
-        value: 3b7d13f6c1e8437c2c7e8fd2ff3d2c8b41e6a4efbbbe8d8a9a9a827530d8e6e4a8e2e33b6a6a2c1a2d3a4b5c6d7e8f9g
-      - key: AWS_ACCESS_KEY_ID
-        value: your_aws_access_key_id
-      - key: AWS_SECRET_ACCESS_KEY
-        value: your_aws_secret_access_key
-      - key: AWS_REGION
-        value: us-east-2
-      - key: AWS_BUCKET_NAME
-        value: pinterest25
-      - key: WEB_CONCURRENCY
-        value: 2
+        value: ${SECRET_KEY_BASE}
+      - key: RAILS_MASTER_KEY
+        value: ${RAILS_MASTER_KEY}

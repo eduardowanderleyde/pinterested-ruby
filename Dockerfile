@@ -1,15 +1,18 @@
 # syntax = docker/dockerfile:1
 
 ARG RUBY_VERSION=3.1.3
-FROM ruby:$RUBY_VERSION-slim as base
+FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 WORKDIR /rails
 
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    SECRET_KEY_BASE=${SECRET_KEY_BASE} \
+    RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 
+# Build stage
 FROM base as build
 
 RUN apt-get update -qq && \
@@ -31,10 +34,10 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 ARG SECRET_KEY_BASE
-ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
+ARG RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE=$SECRET_KEY_BASE RAILS_MASTER_KEY=$RAILS_MASTER_KEY ./bin/rails assets:precompile
 
-RUN SECRET_KEY_BASE=$SECRET_KEY_BASE ./bin/rails assets:precompile
-
+# Final stage
 FROM base
 
 RUN apt-get update -qq && \
