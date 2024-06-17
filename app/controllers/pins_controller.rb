@@ -4,7 +4,7 @@ class PinsController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy]
 
   def index
-    @pins = Pin.all
+    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     @pins_with_expiring_urls = @pins.map do |pin|
       {
         pin: pin,

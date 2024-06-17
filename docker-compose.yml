@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SECRET_KEY_BASE=7f513993226bbb01a9f4a4c3f9e74f9147492419cef676bf3f2c097d265e1aa9ee677d4f4cc3d2a7008230b631b5481f61d199315d275f5ea5982259cf0eddd8
+    environment:
+      - RAILS_ENV=production
+      - DATABASE_HOST=db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rails
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

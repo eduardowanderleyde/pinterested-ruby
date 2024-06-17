@@ -1,27 +1,31 @@
 <p style="color: blue"><%= notice %></p>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2>Pin Details</h2>
-  </div>
-  <div class="panel-body">
-    <% if @image_url.present? %>
-      <img src="<%= @image_url %>" alt="Pin image" class="img-responsive">
-    <% else %>
-      <p>No image available</p>
-    <% end %>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        <h2>Pin Details</h2>
+      </div>
+      <div class="panel-body text-center">
+        <% if @image_url.present? %>
+          <img src="<%= @image_url %>" alt="Pin image" class="img-responsive center-block">
+        <% else %>
+          <p>No image available</p>
+        <% end %>
 
-    <div class="well">
-      <p><strong>Description:</strong> <%= @pin.description %></p>
-      <% if @pin.user %>
-        <p><strong>Posted by:</strong> <%= @pin.user.email %></p>
-      <% end %>
-    </div>
+        <div class="well">
+          <p><strong>Description:</strong> <%= @pin.description %></p>
+          <% if @pin.user %>
+            <p><strong>Posted by:</strong> <%= @pin.user.email %></p>
+          <% end %>
+        </div>
 
-    <div class="btn-group">
-      <%= link_to "Edit this pin", edit_pin_path(@pin), class: "btn btn-primary" %>
-      <%= link_to "Back to pins", pins_path, class: "btn btn-default" %>
-      <%= button_to "Destroy this pin", @pin, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <div class="btn-group">
+          <%= link_to "Edit this pin", edit_pin_path(@pin), class: "btn btn-primary" %>
+          <%= link_to "Back to pins", pins_path, class: "btn btn-default" %>
+          <%= button_to "Destroy this pin", @pin, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

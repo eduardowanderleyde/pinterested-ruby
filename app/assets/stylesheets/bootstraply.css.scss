@@ -2,10 +2,15 @@ $navbar-height: 50px;
 $navbar-default-bg: #f8f8f8;
 $jumbotron-bg: #f8f8f8;
 $navbar-default-brand-color: #cb2027;
+$link-color: #cb2027;
+$pagination-active-bg: #cb2027;
+$pagination-active-border: #cb2027;
+$jumbotron-bg: #f8f8f8;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Seus estilos personalizados vêm depois de importar o Bootstrap
 .navbar-custom {
   background-color: $navbar-default-bg;
   height: $navbar-height;
@@ -15,7 +20,6 @@ $navbar-default-brand-color: #cb2027;
   font-size: 2rem;
   line-height: $navbar-height;
   color: $navbar-default-brand-color !important;
-  /* Certifique-se que esta linha existe */
 }
 
 .navbar-custom .nav-link {
@@ -29,4 +33,9 @@ $navbar-default-brand-color: #cb2027;
 
 .center {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
 }

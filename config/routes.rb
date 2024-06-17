@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   get 'system/:folder/:model/:id/:style/:filename', to: 'images#show', constraints: { folder: /[0-9a-zA-Z_\/]+/, model: /[0-9a-zA-Z_]+/, id: /\d+/, style: /[0-9a-zA-Z_]+/, filename: /[0-9a-zA-Z_\-\.]+/ }
 
   # Defines the root path route ("/")
-  root "home#index"
+  root "pins#index"
   get 'home/about'
 end

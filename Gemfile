@@ -21,6 +21,8 @@ gem 'active_storage_validations'
 gem 'mimemagic', '~> 0.3.10'
 gem 'paperclip', '~> 6.1.0'
 gem 'aws-sdk-s3', require: false
+gem "will_paginate", "~> 3.3"
+gem 'will_paginate-bootstrap', '~> 1.0.1'
 
 gem 'dotenv-rails', groups: [:development, :test]
 

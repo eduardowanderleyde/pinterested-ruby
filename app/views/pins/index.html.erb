@@ -1,9 +1,8 @@
+<%= render 'home/jumbo' %>
+
 <p style="color: blue"><%= notice %></p>
 
-<div class="panel panel-default" style="background-color: #f0f0f0; padding: 20px;">
-  <div class="panel-heading">
-    <h2>Pins</h2>
-  </div>
+<div class="panel panel-default" style="background-color:#f8f8f8 padding: 20px;">
   <div class="panel-body">
     <div class="pins list-group" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; background-color: white;">
       <% @pins_with_expiring_urls.each do |item| %>
@@ -34,7 +33,8 @@
       <% end %>
     </div>
   </div>
-  <div class="panel-footer" style="text-align: center;">
-    <%= link_to "New pin", new_pin_path, class: "btn btn-primary" %>
-  </div>
+</div>
+
+<div class="center">
+  <%= will_paginate @pins, renderer: BootstrapPagination::Rails %>
 </div>
